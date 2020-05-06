@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/t3-tallerdeintegracion/static/css/main.d1b05096.chunk.css",
+    "main.js": "/t3-tallerdeintegracion/static/js/main.b8fcd6d3.chunk.js",
+    "main.js.map": "/t3-tallerdeintegracion/static/js/main.b8fcd6d3.chunk.js.map",
+    "runtime-main.js": "/t3-tallerdeintegracion/static/js/runtime-main.799f76fe.js",
+    "runtime-main.js.map": "/t3-tallerdeintegracion/static/js/runtime-main.799f76fe.js.map",
+    "static/js/2.7564da71.chunk.js": "/t3-tallerdeintegracion/static/js/2.7564da71.chunk.js",
+    "static/js/2.7564da71.chunk.js.map": "/t3-tallerdeintegracion/static/js/2.7564da71.chunk.js.map",
+    "index.html": "/t3-tallerdeintegracion/index.html",
+    "precache-manifest.b37e7d956414585f9fe93902752ee78d.js": "/t3-tallerdeintegracion/precache-manifest.b37e7d956414585f9fe93902752ee78d.js",
+    "service-worker.js": "/t3-tallerdeintegracion/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/t3-tallerdeintegracion/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.7564da71.chunk.js.LICENSE.txt": "/t3-tallerdeintegracion/static/js/2.7564da71.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/t3-tallerdeintegracion/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.799f76fe.js",
+    "static/js/2.7564da71.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.b8fcd6d3.chunk.js"
+  ]
+}
