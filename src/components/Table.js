@@ -9,6 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Title from './Title';
 
+
 const useStyles = makeStyles({
   table: {
     minWidth: 650,
@@ -44,7 +45,7 @@ export default function SimpleTable(data) {
               <TableCell align="right">{row[3]}</TableCell>
               <TableCell align="right">{row[4]}</TableCell>
               <TableCell align="right">{row[5]}</TableCell>
-              <TableCell align="right">{(((row[6]-row[5])/row[5])*100).toFixed(2)}%</TableCell>
+              <TableCell align="right" style={(((row[6]-row[5])/row[5])*100).toFixed(2) > 0 ? {color: "green"} : {color: "red"} }>{(((row[6]-row[5])/row[5])*100).toFixed(2)}%</TableCell>
             </TableRow>
           ))}
         </TableBody>

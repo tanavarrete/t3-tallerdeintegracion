@@ -6,6 +6,9 @@ import Button from "@material-ui/core/Button";
 import Chart from "./components/Chart";
 import Table from "./components/Table";
 import Exchange from "./components/Exchange";
+import StockMarket from "./components/StockMarket";
+
+
 
 class App extends Component {
   constructor() {
@@ -126,32 +129,30 @@ class App extends Component {
   render() {
     return (
       <div>
+        <center>
         <Chart>{this.state.stocks[this.state.actual]}</Chart>
+        </center>
         <Button
           onClick={this.handleConnect}
           variant="contained"
-          color="primary"
+          color = {this.state.connected ? "primary" : "secondary" }
         >
           {this.state.connected ? "Disconnect" : "Connect"}
         </Button>
-        <Button
-          onClick={() => this.setState({ actual: 3 })}
-          variant="contained"
-          color="secondary"
-        >
-          Cambio
-        </Button>
         <h2>STOCK:{this.state.stock}</h2>
         <h3>VALUE: {this.state.value}</h3>
-        <Table>{this.state.stocks}</Table>
-        <Exchange stocks={this.state.stocks} exchanges={this.state.exchanges} />
-        {this.state.stocks.map((stock, index) =>  (
+        <StockMarket
+          stocks={this.state.stocks}
+          exchanges={this.state.exchanges}
+        />
+        {this.state.stocks.map((stock, index) => (
           <Button
+            key={index}
             onClick={() => this.setState({ actual: index })}
             variant="contained"
             color="secondary"
           >
-            { stock[0].ticker }
+            {stock[0].ticker}
           </Button>
         ))}
       </div>
