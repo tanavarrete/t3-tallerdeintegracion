@@ -7,8 +7,8 @@ import Chart from "./components/Chart";
 import Table from "./components/Table";
 import Exchange from "./components/Exchange";
 import StockMarket from "./components/StockMarket";
-
-
+import AppBar from "./components/AppBar";
+import Card from "./components/Card";
 
 class App extends Component {
   constructor() {
@@ -21,6 +21,7 @@ class App extends Component {
       graph_data: [],
       actual: 0,
       exchanges: [],
+      stock: {},
     };
     this.state.socket = io(this.state.endpoint, {
       path: "/stocks",
@@ -66,7 +67,7 @@ class App extends Component {
 
   componentDidMount() {
     this.state.socket.on("UPDATE", (data) => {
-      this.setState({ stock: data.ticker });
+      this.setState({ stock: data });
       this.setState({ value: data.value });
       const newStocks = this.state.stocks.slice(); //copy the array
       for (var stock in newStocks) {
@@ -130,21 +131,29 @@ class App extends Component {
     return (
       <div>
         <center>
-        <Chart>{this.state.stocks[this.state.actual]}</Chart>
+          <AppBar />
+          <Chart>{this.state.stocks[this.state.actual]}</Chart>
         </center>
+
+        <br />
         <Button
           onClick={this.handleConnect}
           variant="contained"
-          color = {this.state.connected ? "primary" : "secondary" }
+          color={this.state.connected ? "primary" : "secondary"}
         >
           {this.state.connected ? "Disconnect" : "Connect"}
         </Button>
-        <h2>STOCK:{this.state.stock}</h2>
-        <h3>VALUE: {this.state.value}</h3>
+
+        <br />
+        <Card>{this.state.stock}</Card>
+
+        <br />
         <StockMarket
           stocks={this.state.stocks}
           exchanges={this.state.exchanges}
         />
+        <br />
+        <br />
         {this.state.stocks.map((stock, index) => (
           <Button
             key={index}
@@ -155,6 +164,9 @@ class App extends Component {
             {stock[0].ticker}
           </Button>
         ))}
+
+        <br />
+        <br />
       </div>
     );
   }

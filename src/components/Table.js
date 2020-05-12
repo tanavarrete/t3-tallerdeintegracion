@@ -22,7 +22,7 @@ export default function SimpleTable(data) {
   const classes = useStyles();
   return (
     <React.Fragment>
-    <Title>Stats</Title>
+    <Title>Shares Values</Title>
     <TableContainer component={Paper}>
       <Table size="small" className={classes.table} aria-label="simple table">
         <TableHead>
@@ -44,7 +44,7 @@ export default function SimpleTable(data) {
               <TableCell align="right">{row[1]+row[2]}</TableCell>
               <TableCell align="right">{row[3]}</TableCell>
               <TableCell align="right">{row[4]}</TableCell>
-              <TableCell align="right">{row[5]}</TableCell>
+              <TableCell align="right">{row[6]}</TableCell>
               <TableCell align="right" style={(((row[6]-row[5])/row[5])*100).toFixed(2) > 0 ? {color: "green"} : {color: "red"} }>{(((row[6]-row[5])/row[5])*100).toFixed(2)}%</TableCell>
             </TableRow>
           ))}
