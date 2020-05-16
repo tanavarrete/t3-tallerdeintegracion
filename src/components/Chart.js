@@ -4,8 +4,8 @@ import { ResponsiveContainer } from "recharts";
 import { createChart } from "lightweight-charts";
 
 var chart = createChart(document.body, {
-  width: 600,
-  height: 300,
+  width: 1000,
+  height: 500,
   priceScale: {
     scaleMargins: {
       top: 0.1,

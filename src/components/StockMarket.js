@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   paper: {
+    background: '#dcdcdc',
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
@@ -24,8 +25,8 @@ export default function StockMarket(props) {
         <Grid item xs={12}>
           <Paper className={classes.paper}><Table>{props.stocks}</Table></Paper>
         </Grid>
+        <Grid item xs={12}><Exchange stocks={props.stocks} exchanges={props.exchanges} /></Grid>
       </Grid>
-      <Exchange stocks={props.stocks} exchanges={props.exchanges} />
     </div>
     
   );

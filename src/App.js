@@ -4,11 +4,10 @@ import io from "socket.io-client";
 
 import Button from "@material-ui/core/Button";
 import Chart from "./components/Chart";
-import Table from "./components/Table";
-import Exchange from "./components/Exchange";
 import StockMarket from "./components/StockMarket";
 import AppBar from "./components/AppBar";
 import Card from "./components/Card";
+import Grid from '@material-ui/core/Grid';
 
 class App extends Component {
   constructor() {
@@ -49,7 +48,7 @@ class App extends Component {
       }
     });
     this.state.socket.emit("STOCKS", (data) => {
-      console.log("STOCKS", data); // data will be 'woot'
+      console.log("STOCKS", data); 
     });
     this.state.socket.on("EXCHANGES", (data) => {
       console.log("EXCHANGES", data);
@@ -61,7 +60,7 @@ class App extends Component {
       }
     });
     this.state.socket.emit("EXCHANGES", (data) => {
-      console.log("EXCHANGES", data); // data will be 'woot'
+      console.log("EXCHANGES", data); 
     });
   }
 
@@ -133,17 +132,21 @@ class App extends Component {
         <center>
           <AppBar />
           <Chart>{this.state.stocks[this.state.actual]}</Chart>
-        </center>
 
         <br />
+        <Grid container spacing={3}>
+        <Grid item xs={12}>
         <Button
           onClick={this.handleConnect}
+          size="large"
           variant="contained"
           color={this.state.connected ? "primary" : "secondary"}
         >
           {this.state.connected ? "Disconnect" : "Connect"}
         </Button>
-
+        </Grid>
+        </Grid>
+        </center>
         <br />
         <Card>{this.state.stock}</Card>
 

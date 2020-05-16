@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import {  withStyles,makeStyles } from '@material-ui/core/styles';
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -10,16 +10,40 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import Title from "./Title";
 
+
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.background.default,
+    },
+  },
+}))(TableRow);
+
 const useStyles = makeStyles((theme) => ({
   table: {
-    minWidth: 650,
+    minWidth: 600,
+  },
+  root: {
+    flexGrow: 1,
   },
   paper: {
+    background: '#dcdcdc',
     padding: theme.spacing(2),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
+    textAlign: 'center',
+    color: theme.palette.text.primary,
   },
 }));
+
 
 export default function SimpleTable(data) {
   const classes = useStyles();
@@ -64,8 +88,9 @@ export default function SimpleTable(data) {
   var TotalMercado = volumenTotal();
   return (
     <div>
+      <Grid container spacing={1}>
       {data.exchanges.map((exchange, index) => (
-        <Grid item xs={12}>
+        <Grid item xs={12} sm={6}>
           <Paper className={classes.paper}>
             <React.Fragment>
               <Title>{exchange.name}</Title>
@@ -78,17 +103,17 @@ export default function SimpleTable(data) {
                 >
                   <TableHead>
                     <TableRow>
-                      <TableCell align="right">Volumen Compra (BUY)</TableCell>
-                      <TableCell align="right">Volumen Venta (SELL)</TableCell>
-                      <TableCell align="right">Volumen Total</TableCell>
-                      <TableCell align="right">Cantidad Acciones</TableCell>
-                      <TableCell align="right">
+                    <StyledTableCell align="right">Volumen Compra (BUY)</StyledTableCell>
+                      <StyledTableCell align="right">Volumen Venta (SELL)</StyledTableCell>
+                      <StyledTableCell align="right">Volumen Total</StyledTableCell>
+                      <StyledTableCell align="right">Cantidad Acciones</StyledTableCell>
+                      <StyledTableCell align="right">
                         Participación de Mercado
-                      </TableCell>
+                      </StyledTableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    <TableRow>
+                    <StyledTableRow>
                       <TableCell align="left" component="th" scope="row">
                         {volumenCompra(exchange)}
                       </TableCell>
@@ -109,7 +134,7 @@ export default function SimpleTable(data) {
                         ).toFixed(2)}
                         %
                       </TableCell>
-                    </TableRow>
+                    </StyledTableRow>
                   </TableBody>
                 </Table>
               </TableContainer>
@@ -117,6 +142,7 @@ export default function SimpleTable(data) {
           </Paper>
         </Grid>
       ))}
+      </Grid>
     </div>
   );
 }
